@@ -6,7 +6,7 @@ if [[ -z $TRAVIS_TAG ]]; then
   exit 1
 fi
 
-BUILD_REPO_URL=https://github.com/akhavr/electrum-dash.git
+BUILD_REPO_URL=https://github.com/PACGlobalOfficial/electrum-pac.git
 
 cd build
 
@@ -17,7 +17,7 @@ cd electrum-dash
 export PY36BINDIR=/Library/Frameworks/Python.framework/Versions/3.6/bin/
 export PATH=$PATH:$PY36BINDIR
 source ./contrib/dash/travis/electrum_dash_version_env.sh;
-echo osx build version is $DASH_ELECTRUM_VERSION
+echo osx build version is $PAC_ELECTRUM_VERSION
 
 
 git submodule init
@@ -47,9 +47,9 @@ cp contrib/dash/pyi_tctl_runtimehook.py .
 
 pyinstaller \
     -y \
-    --name electrum-dash-$DASH_ELECTRUM_VERSION.bin \
+    --name electrum-dash-$PAC_ELECTRUM_VERSION.bin \
     osx.spec
 
-sudo hdiutil create -fs HFS+ -volname "Dash Electrum" \
+sudo hdiutil create -fs HFS+ -volname "PacGlobal Electrum" \
     -srcfolder dist/Dash\ Electrum.app \
-    dist/Dash-Electrum-$DASH_ELECTRUM_VERSION-macosx.dmg
+    dist/Dash-Electrum-$PAC_ELECTRUM_VERSION-macosx.dmg

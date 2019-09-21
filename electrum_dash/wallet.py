@@ -248,7 +248,7 @@ class Abstract_Wallet(AddressSynchronizer):
 
     def load_and_cleanup(self):
         self.load_keystore()
-        self.test_addresses_sanity()
+        #self.test_addresses_sanity()
         super().load_and_cleanup()
 
     def diagnostic_name(self):

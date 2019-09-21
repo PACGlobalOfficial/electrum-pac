@@ -13,7 +13,7 @@ else:
     raise Exception('no name')
 
 PY36BINDIR =  os.environ.get('PY36BINDIR')
-DASH_ELECTRUM_VERSION =  os.environ.get('DASH_ELECTRUM_VERSION')
+PAC_ELECTRUM_VERSION =  os.environ.get('PAC_ELECTRUM_VERSION')
 
 hiddenimports = collect_submodules('trezorlib')
 hiddenimports += collect_submodules('hideezlib')
@@ -179,7 +179,7 @@ app = BUNDLE(coll,
                     {'CFBundleURLName': 'dash', 'CFBundleURLSchemes': ['dash']}
                 ],
              },
-             name=os.path.join('dist', 'Dash Electrum.app'),
-             appname="Dash Electrum",
+             name=os.path.join('dist', 'PacGlobal Electrum.app'),
+             appname="PacGlobal Electrum",
 	         icon='electrum-dash.icns',
-             version=DASH_ELECTRUM_VERSION)
+             version=PAC_ELECTRUM_VERSION)

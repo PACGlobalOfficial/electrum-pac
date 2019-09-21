@@ -56,7 +56,7 @@ def read_json_gz(filename, default):
     return r
 
 
-GIT_REPO_URL = "https://github.com/akhavr/electrum-dash"
+GIT_REPO_URL = "https://github.com/PACGlobalOfficial/electrum-pac"
 GIT_REPO_ISSUES_URL = f"{GIT_REPO_URL}/issues"
 
 
@@ -70,13 +70,13 @@ class AbstractNet:
 class BitcoinMainnet(AbstractNet):
 
     TESTNET = False
-    WIF_PREFIX = 204
-    ADDRTYPE_P2PKH = 76
-    ADDRTYPE_P2SH = 16
-    GENESIS = "00000ffd590b1485b3caadc19b22e6379c733355108f107a430458cdf3407ab6"
-    DEFAULT_PORTS = {'t': '50001', 's': '50002'}
+    WIF_PREFIX = 0xcc
+    ADDRTYPE_P2PKH = 0x37
+    ADDRTYPE_P2SH = 0x0a
+    GENESIS = "00000354655ff039a51273fe61d3b493bd2897fe6c16f732dbc4ae19f04b789e"
+    DEFAULT_PORTS = {'s': '50002'}
     DEFAULT_SERVERS = read_json('servers.json', {})
-    CHECKPOINTS = read_json_gz('checkpoints.json.gz', [])
+    CHECKPOINTS = []
 
     XPRV_HEADERS = {
         'standard':    0x0488ade4,  # xprv
@@ -89,7 +89,7 @@ class BitcoinMainnet(AbstractNet):
     DRKV_HEADER = 0x02fe52f8  # drkv
     DRKP_HEADER = 0x02fe52cc  # drkp
     BIP44_COIN_TYPE = 5
-    DIP3_ACTIVATION_HEIGHT = 1028160
+    DIP3_ACTIVATION_HEIGHT = 330000
 
 
 class BitcoinTestnet(AbstractNet):

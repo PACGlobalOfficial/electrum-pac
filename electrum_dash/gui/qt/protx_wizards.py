@@ -42,7 +42,7 @@ class SComboBox(QComboBox):
 
 
 class OutputsList(QListWidget):
-    '''Widget that displays available 1000 DASH outputs.'''
+    '''Widget that displays available 500000 PAC outputs.'''
     outputSelected = pyqtSignal(dict, name='outputSelected')
     def __init__(self, parent=None):
         super(OutputsList, self).__init__(parent)
@@ -308,7 +308,7 @@ class ImportLegacyWizardPage(QWizardPage):
                 value = 0
 
         if prevout_hash:
-            val_dash = '%s DASH' % (value/COIN) if value else ''
+            val_dash = '%s PAC' % (value/COIN) if value else ''
             self.collateral_val.setText(val_dash)
             self.collateral_value = value
             self.collateral.setText('%s:%s' % (prevout_hash, prevout_n))
@@ -959,7 +959,7 @@ class CollateralWizardPage(QWizardPage):
         self.frozen_cb = QCheckBox('Include frozen addresses')
         self.frozen_cb.setChecked(False)
         self.frozen_cb.stateChanged.connect(self.frozen_state_changed)
-        self.not_found = QLabel('No 1000 DASH outputs were found.')
+        self.not_found = QLabel('No 500000 PAC outputs were found.')
         self.not_found.setObjectName('err-label')
         self.not_found.hide()
 

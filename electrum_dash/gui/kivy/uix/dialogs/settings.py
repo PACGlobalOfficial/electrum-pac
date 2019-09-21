@@ -17,7 +17,7 @@ Builder.load_string('''
 
 <SettingsDialog@Popup>
     id: settings
-    title: _('Dash Electrum Settings')
+    title: _('PacGlobal Electrum Settings')
     disable_pin: False
     use_encryption: False
     BoxLayout:

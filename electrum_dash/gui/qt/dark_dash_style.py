@@ -7,7 +7,7 @@ from electrum_dash.util import pkg_dir
 dash_stylesheet = """
 
 /**********************/
-/* DASH Evolution CSS */
+/* PAC Evolution CSS */
 /*
 0. OSX Reset
 1. Navigation Bar

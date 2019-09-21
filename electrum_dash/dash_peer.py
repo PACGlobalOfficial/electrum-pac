@@ -46,7 +46,7 @@ from .version import ELECTRUM_VERSION
 
 
 EMPTY_PAYLOAD_CHECKSUM = b'\x5D\xF6\xE0\xE2'
-DASH_PROTO_VERSION = 70214
+PAC_PROTO_VERSION = 70216
 LOCAL_IP_ADDR = ipaddress.ip_address('127.0.0.1')
 PAYLOAD_LIMIT = 32*2**20  # 32MiB
 READ_LIMIT = 64*2**10     # 64KiB
@@ -340,7 +340,7 @@ class DashPeer(Logger):
         await self.sw.drain()
 
     async def send_version(self):
-        version = DASH_PROTO_VERSION
+        version = PAC_PROTO_VERSION
         services = 0
         timestamp = int(time.time())
         recv_services = 1
@@ -350,7 +350,7 @@ class DashPeer(Logger):
         trans_ip = LOCAL_IP_ADDR
         trans_port = self.default_port
         nonce = random.getrandbits(64)
-        user_agent = '/Dash Electrum:%s/' % ELECTRUM_VERSION
+        user_agent = '/PacGlobal Electrum:%s/' % ELECTRUM_VERSION
         start_height = self.dash_net.network.get_local_height()
         relay = 0
         msg = DashVersionMsg(version, services, timestamp,

@@ -373,7 +373,7 @@ class Commands:
 
     @command('n')
     def getmerkle(self, txid, height):
-        """Get Merkle branch of a transaction included in a block. Dash Electrum
+        """Get Merkle branch of a transaction included in a block. PacGlobal Electrum
         uses this to verify transactions (Simple Payment Verification)."""
         return self.network.run_from_another_thread(self.network.get_merkle_for_transaction(txid, int(height)))
 
@@ -384,7 +384,7 @@ class Commands:
 
     @command('')
     def version(self):
-        """Return the version of Dash Electrum."""
+        """Return the version of PacGlobal Electrum."""
         from .version import ELECTRUM_VERSION
         return ELECTRUM_VERSION
 
@@ -611,7 +611,7 @@ class Commands:
             PR_PAID: 'Paid',
             PR_EXPIRED: 'Expired',
         }
-        out['amount (DASH)'] = format_satoshis(out.get('amount'))
+        out['amount (PAC)'] = format_satoshis(out.get('amount'))
         out['status'] = pr_str[out.get('status', PR_UNKNOWN)]
         return out
 
@@ -980,8 +980,8 @@ param_descriptions = {
     'pubkey': 'Public key',
     'message': 'Clear text message. Use quotes if it contains spaces.',
     'encrypted': 'Encrypted message',
-    'amount': 'Amount to be sent (in DASH). Type \'!\' to send the maximum available.',
-    'requested_amount': 'Requested amount (in DASH).',
+    'amount': 'Amount to be sent (in PAC). Type \'!\' to send the maximum available.',
+    'requested_amount': 'Requested amount (in PAC).',
     'outputs': 'list of ["address", amount]',
     'redeem_script': 'redeem script (hexadecimal)',
     'conf_file': 'Masternode.conf file from Dash.',
@@ -1148,7 +1148,7 @@ def get_parser():
     add_global_options(parser)
     subparsers = parser.add_subparsers(dest='cmd', metavar='<command>')
     # gui
-    parser_gui = subparsers.add_parser('gui', description="Run Dash Electrum Graphical User Interface.", help="Run GUI (default)")
+    parser_gui = subparsers.add_parser('gui', description="Run PacGlobal Electrum Graphical User Interface.", help="Run GUI (default)")
     parser_gui.add_argument("url", nargs='?', default=None, help="dash URI (or bip70 file)")
     parser_gui.add_argument("-g", "--gui", dest="gui", help="select graphical user interface", choices=['qt', 'kivy', 'text', 'stdio'])
     parser_gui.add_argument("-o", "--offline", action="store_true", dest="offline", default=False, help="Run offline")

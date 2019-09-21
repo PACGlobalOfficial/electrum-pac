@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = Dash Electrum
+title = PacGlobal Electrum
 
 # (str) Package name
-package.name = Electrum_DASH
+package.name = Electrum_PAC
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.dash.electrum
