@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Dash-Electrum - lightweight Dash client
-# Copyright (C) 2018 Dash Developers
+# PACGlobal-Electrum - lightweight PACGlobal client
+# Copyright (C) 2018 PACGlobal Developers
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation files
@@ -99,7 +99,7 @@ def read_uint16_nbo(vds):
 
 
 class DashTxError(Exception):
-    """Thrown when there's a problem with Dash serialize/deserialize"""
+    """Thrown when there's a problem with PACGlobal serialize/deserialize"""
 
 
 class ProTxService (namedtuple('ProTxService', 'ip port')):
@@ -795,6 +795,6 @@ def serialize_extra_payload(tx):
         return extra
 
     if not isinstance(extra, spec_tx_class):
-        raise DashTxError('Dash tx_type not conform with extra'
+        raise DashTxError('PACGlobal tx_type not conform with extra'
                           ' payload class: %s, %s' % (tx_type, extra))
     return extra.serialize()

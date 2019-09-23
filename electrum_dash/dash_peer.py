@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Dash-Electrum - lightweight Dash client
-# Copyright (C) 2019 Dash Developers
+# PACGlobal-Electrum - lightweight PACGlobal client
+# Copyright (C) 2019 PACGlobal Developers
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation files

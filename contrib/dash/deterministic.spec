@@ -115,7 +115,7 @@ excludes += [
     'PyQt5.QtWinExtras',
 ]
 
-a = Analysis(['electrum-dash'],
+a = Analysis(['electrum-pac'],
              hiddenimports=hiddenimports,
              datas=datas,
              binaries=binaries,
@@ -137,7 +137,7 @@ exe = EXE(pyz,
           strip=False,
           upx=False,
           console=False,
-          icon='electrum_dash/gui/icons/electrum-dash.ico',
+          icon='electrum_dash/gui/icons/electrum-pac.ico',
           name=os.path.join('build\\pyi.win32\\electrum', cmdline_name))
 
 # exe with console output
@@ -148,7 +148,7 @@ conexe = EXE(pyz,
           strip=False,
           upx=False,
           console=True,
-          icon='electrum_dash/gui/icons/electrum-dash.ico',
+          icon='electrum_dash/gui/icons/electrum-pac.ico',
           name=os.path.join('build\\pyi.win32\\electrum',
                             'console-%s' % cmdline_name))
 
@@ -177,4 +177,4 @@ coll = COLLECT(exe, conexe, #tctl_exe,
                a.datas,
                strip=False,
                upx=False,
-               name=os.path.join('dist', 'electrum-dash'))
+               name=os.path.join('dist', 'electrum-pac'))

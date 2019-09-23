@@ -122,7 +122,7 @@ excludes += [
     'PyQt5.QtWinExtras',
 ]
 
-a = Analysis(['electrum-dash'],
+a = Analysis(['electrum-pac'],
              hiddenimports=hiddenimports,
              datas=datas,
              binaries=binaries,
@@ -144,8 +144,8 @@ exe = EXE(pyz,
           strip=False,
           upx=False,
           console=False,
-          icon='electrum_dash/gui/icons/electrum-dash.ico',
-          name=os.path.join('build/electrum-dash/electrum-dash', cmdline_name))
+          icon='electrum_dash/gui/icons/electrum-pac.ico',
+          name=os.path.join('build/electrum-pac/electrum-pac', cmdline_name))
 
 # trezorctl separate bin
 tctl_a = Analysis([os.path.join(PY36BINDIR, 'trezorctl')],
@@ -162,14 +162,14 @@ tctl_exe = EXE(tctl_pyz,
            strip=False,
            upx=False,
            console=True,
-           name=os.path.join('build/electrum-dash/electrum-dash', 'trezorctl.bin'))
+           name=os.path.join('build/electrum-pac/electrum-pac', 'trezorctl.bin'))
 
 coll = COLLECT(exe, #tctl_exe,
                a.binaries,
                a.datas,
                strip=False,
                upx=False,
-               name=os.path.join('dist', 'electrum-dash'))
+               name=os.path.join('dist', 'electrum-pac'))
 
 app = BUNDLE(coll,
              info_plist={
@@ -181,5 +181,5 @@ app = BUNDLE(coll,
              },
              name=os.path.join('dist', 'PacGlobal Electrum.app'),
              appname="PacGlobal Electrum",
-	         icon='electrum-dash.icns',
+	         icon='electrum-pac.icns',
              version=PAC_ELECTRUM_VERSION)

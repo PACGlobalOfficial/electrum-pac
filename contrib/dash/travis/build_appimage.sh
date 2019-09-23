@@ -6,7 +6,7 @@ PROJECT_ROOT="$(dirname "$(readlink -e "$0")")/../../.."
 CONTRIB="$PROJECT_ROOT/contrib"
 DISTDIR="$PROJECT_ROOT/dist"
 BUILDDIR="/var/build/appimage"
-APPDIR="$BUILDDIR/electrum-dash.AppDir"
+APPDIR="$BUILDDIR/electrum-pac.AppDir"
 CACHEDIR="$BUILDDIR/.cache/appimage"
 
 # pinned versions
@@ -19,7 +19,7 @@ pushd $PROJECT_ROOT
 source $CONTRIB/dash/travis/electrum_dash_version_env.sh
 popd
 VERSION=$PAC_ELECTRUM_VERSION
-APPIMAGE="$DISTDIR/Dash-Electrum-$VERSION-x86_64.AppImage"
+APPIMAGE="$DISTDIR/PACGlobal-Electrum-$VERSION-x86_64.AppImage"
 
 mkdir -p "$APPDIR" "$CACHEDIR" "$DISTDIR"
 
@@ -57,7 +57,7 @@ info "installing pip."
 "$python" -m ensurepip
 
 
-info "installing electrum-dash and its dependencies."
+info "installing electrum-pac and its dependencies."
 mkdir -p "$CACHEDIR/pip_cache"
 "$python" -m pip install --no-warn-script-location --cache-dir "$CACHEDIR/pip_cache" -r "$CONTRIB/deterministic-build/requirements.txt"
 "$python" -m pip install --no-warn-script-location --cache-dir "$CACHEDIR/pip_cache" -r "$CONTRIB/deterministic-build/requirements-binaries.txt"
@@ -70,8 +70,8 @@ cp "/usr/lib/libzbar.so.0" "$APPDIR/usr/lib/libzbar.so.0"
 
 
 info "desktop integration."
-cp "$PROJECT_ROOT/electrum-dash.desktop" "$APPDIR/electrum-dash.desktop"
-cp "$PROJECT_ROOT/electrum_dash/gui/icons/electrum-dash.png" "$APPDIR/electrum-dash.png"
+cp "$PROJECT_ROOT/electrum-pac.desktop" "$APPDIR/electrum-pac.desktop"
+cp "$PROJECT_ROOT/electrum_dash/gui/icons/electrum-pac.png" "$APPDIR/electrum-pac.png"
 
 
 # add launcher

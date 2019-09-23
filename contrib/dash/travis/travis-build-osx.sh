@@ -10,9 +10,9 @@ BUILD_REPO_URL=https://github.com/PACGlobalOfficial/electrum-pac.git
 
 cd build
 
-git clone --branch $TRAVIS_TAG $BUILD_REPO_URL electrum-dash
+git clone --branch $TRAVIS_TAG $BUILD_REPO_URL electrum-pac
 
-cd electrum-dash
+cd electrum-pac
 
 export PY36BINDIR=/Library/Frameworks/Python.framework/Versions/3.6/bin/
 export PATH=$PATH:$PY36BINDIR
@@ -47,9 +47,9 @@ cp contrib/dash/pyi_tctl_runtimehook.py .
 
 pyinstaller \
     -y \
-    --name electrum-dash-$PAC_ELECTRUM_VERSION.bin \
+    --name electrum-pac-$PAC_ELECTRUM_VERSION.bin \
     osx.spec
 
 sudo hdiutil create -fs HFS+ -volname "PacGlobal Electrum" \
-    -srcfolder dist/Dash\ Electrum.app \
-    dist/Dash-Electrum-$PAC_ELECTRUM_VERSION-macosx.dmg
+    -srcfolder dist/PACGlobal\ Electrum.app \
+    dist/PACGlobal-Electrum-$PAC_ELECTRUM_VERSION-macosx.dmg

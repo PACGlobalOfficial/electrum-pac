@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Dash-Electrum - lightweight Dash client
-# Copyright (C) 2019 Dash Developers
+# PACGlobal-Electrum - lightweight PACGlobal client
+# Copyright (C) 2019 PACGlobal Developers
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation files
@@ -81,14 +81,14 @@ def is_valid_portnum(portnum):
 
 
 class DashSporks:
-    '''Dash Sporks manager'''
+    '''PACGlobal Sporks manager'''
 
     LOGGING_SHORTCUT = 'D'
 
     SPORKS_DEFAULTS = {
         SporkID.SPORK_2_INSTANTSEND_ENABLED.value: 0,               # ON
         SporkID.SPORK_3_INSTANTSEND_BLOCK_FILTERING.value: 0,       # ON
-        SporkID.SPORK_5_INSTANTSEND_MAX_VALUE.value: 1000,          # 1000 Dash
+        SporkID.SPORK_5_INSTANTSEND_MAX_VALUE.value: 1000,          # 1000 PACGlobal
         SporkID.SPORK_6_NEW_SIGS.value: Y2099,                      # OFF
         SporkID.SPORK_9_SUPERBLOCKS_ENABLED.value: Y2099,           # OFF
         SporkID.SPORK_12_RECONSIDER_BLOCKS.value: 0,                # 0 Blocks
@@ -428,7 +428,7 @@ class DashNet(Logger):
         assert not self.connecting and not self.peers_queue
         self.peers_queue = queue.Queue()
         self.proxy = self.network.proxy
-        self.logger.info('starting Dash network')
+        self.logger.info('starting PACGlobal network')
         self.disconnected_static = {}
         async def main():
             try:
@@ -451,7 +451,7 @@ class DashNet(Logger):
         if not self.main_taskgroup:
             return
 
-        self.logger.info('stopping Dash network')
+        self.logger.info('stopping PACGlobal network')
         try:
             await asyncio.wait_for(self.main_taskgroup.cancel_remaining(),
                                    timeout=2)

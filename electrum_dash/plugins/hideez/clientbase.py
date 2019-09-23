@@ -55,8 +55,8 @@ class HideezClientBase(GuiMixin, Logger):
 
     def has_usable_connection_with_device(self):
         try:
-            res = self.ping("electrum-dash pinging device")
-            assert res == "electrum-dash pinging device"
+            res = self.ping("electrum-pac pinging device")
+            assert res == "electrum-pac pinging device"
         except BaseException:
             return False
         return True

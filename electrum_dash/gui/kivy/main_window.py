@@ -733,9 +733,9 @@ class ElectrumWindow(App):
         self.requests_screen = None
         self.address_screen = None
         if self.testnet:
-            self.icon = 'electrum_dash/gui/icons/electrum-dash-testnet.png'
+            self.icon = 'electrum_dash/gui/icons/electrum-pac-testnet.png'
         else:
-            self.icon = 'electrum_dash/gui/icons/electrum-dash.png'
+            self.icon = 'electrum_dash/gui/icons/electrum-pac.png'
         self.tabs = self.root.ids['tabs']
 
     def update_interfaces(self, dt):

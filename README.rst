@@ -1,5 +1,5 @@
-PacGlobal Electrum - Lightweight Dashpay client
-=====================================
+PacGlobal Electrum - Lightweight PAC Client
+===========================================
 
 ::
 
@@ -9,8 +9,8 @@ PacGlobal Electrum - Lightweight Dashpay client
   Homepage: https://electrum.dash.org/
 
 
-.. image:: https://travis-ci.org/akhavr/electrum-dash.svg?branch=master
-    :target: https://travis-ci.org/akhavr/electrum-dash
+.. image:: https://travis-ci.org/akhavr/electrum-pac.svg?branch=master
+    :target: https://travis-ci.org/akhavr/electrum-pac
     :alt: Build Status
 
 
@@ -58,7 +58,7 @@ To install precise tested version of pyqt5 run once::
 
 To run PacGlobal Electrum from its root directory, just do::
 
-    ./electrum-dash
+    ./electrum-pac
 
 You can also install PacGlobal Electrum on your system, by running this command::
 
@@ -95,7 +95,7 @@ Development version
 Check out the code from GitHub::
 
     git clone https://github.com/PACGlobalOfficial/electrum-pac.git
-    cd electrum-dash
+    cd electrum-pac
 
 Run install (this should install dependencies)::
 

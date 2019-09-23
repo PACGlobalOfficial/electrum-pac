@@ -52,8 +52,8 @@ from .logging import get_logger, Logger
 _logger = get_logger(__name__)
 
 
-REQUEST_HEADERS = {'Accept': 'application/dash-paymentrequest', 'User-Agent': 'Dash-Electrum'}
-ACK_HEADERS = {'Content-Type':'application/dash-payment','Accept':'application/dash-paymentack','User-Agent':'Dash-Electrum'}
+REQUEST_HEADERS = {'Accept': 'application/dash-paymentrequest', 'User-Agent': 'PACGlobal-Electrum'}
+ACK_HEADERS = {'Content-Type':'application/dash-payment','Accept':'application/dash-paymentack','User-Agent':'PACGlobal-Electrum'}
 
 ca_path = certifi.where()
 ca_list = None

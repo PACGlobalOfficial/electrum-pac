@@ -210,7 +210,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         if self.config.get("is_maximized"):
             self.showMaximized()
 
-        self.setWindowIcon(read_QIcon("electrum-dash.png"))
+        self.setWindowIcon(read_QIcon("electrum-pac.png"))
         self.init_menubar()
 
         wrtabs = weakref.proxy(tabs)
@@ -266,10 +266,10 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
             self.show_warning(self.wallet.storage.backup_message,
                               title=_('Information'))
 
-        if (self.network
-                and self.network.tor_auto_on and not self.network.tor_on):
-            self.show_warning(self.network.tor_warn_msg +
-                              self.network.tor_docs_uri_qt, rich_text=True)
+        #if (self.network
+        #        and self.network.tor_auto_on and not self.network.tor_on):
+        #    self.show_warning(self.network.tor_warn_msg +
+        #                      self.network.tor_docs_uri_qt, rich_text=True)
 
         # If the option hasn't been set yet
         if config.get('check_updates') is None:
@@ -514,8 +514,8 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         if self.wallet.is_watching_only():
             msg = ' '.join([
                 _("This wallet is watching-only."),
-                _("This means you will not be able to spend Dash coins with it."),
-                _("Make sure you own the seed phrase or the private keys, before you request Dash coins to be sent to this wallet.")
+                _("This means you will not be able to spend PACGlobal coins with it."),
+                _("Make sure you own the seed phrase or the private keys, before you request PACGlobal coins to be sent to this wallet.")
             ])
             self.show_warning(msg, title=_('Watch-only wallet'))
 
@@ -532,7 +532,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         msg = ''.join([
             _("You are in testnet mode."), ' ',
             _("Testnet coins are worthless."), '\n',
-            _("Testnet is separate from the main Dash network. It is used for testing.")
+            _("Testnet is separate from the main PACGlobal network. It is used for testing.")
         ])
         cb = QCheckBox(_("Don't show this again."))
         cb_checked = False
@@ -715,11 +715,11 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
     def show_about(self):
         QMessageBox.about(self, "PacGlobal Electrum",
                           (_("Version")+" %s" % ELECTRUM_VERSION + "\n\n" +
-                           _("Electrum's focus is speed, with low resource usage and simplifying Dash.") + " " +
+                           _("Electrum's focus is speed, with low resource usage and simplifying PACGlobal.") + " " +
                            _("You do not need to perform regular backups, because your wallet can be "
                               "recovered from a secret phrase that you can memorize or write on paper.") + " " +
                            _("Startup times are instant because it operates in conjunction with high-performance "
-                              "servers that handle the most complicated parts of the Dash system.") + "\n\n" +
+                              "servers that handle the most complicated parts of the PACGlobal system.") + "\n\n" +
                            _("Uses icons from the Icons8 icon pack (icons8.com).")))
 
     def show_update_check(self, version=None):
@@ -968,7 +968,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         self.receive_address_e = ButtonsLineEdit()
         self.receive_address_e.addCopyButton(self.app)
         self.receive_address_e.setReadOnly(True)
-        msg = _('Dash address where the payment should be received. Note that each payment request uses a different Dash address.')
+        msg = _('PACGlobal address where the payment should be received. Note that each payment request uses a different PACGlobal address.')
         self.receive_address_label = HelpLabel(_('Receiving address'), msg)
         self.receive_address_e.textChanged.connect(self.update_receive_qr)
         self.receive_address_e.textChanged.connect(self.update_receive_address_styling)
@@ -999,8 +999,8 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         msg = ' '.join([
             _('Expiration date of your request.'),
             _('This information is seen by the recipient if you send them a signed payment request.'),
-            _('Expired requests have to be deleted manually from your list, in order to free the corresponding Dash addresses.'),
-            _('The Dash address never expires and will always be part of this PacGlobal Electrum wallet.'),
+            _('Expired requests have to be deleted manually from your list, in order to free the corresponding PACGlobal addresses.'),
+            _('The PACGlobal address never expires and will always be part of this PacGlobal Electrum wallet.'),
         ])
         grid.addWidget(HelpLabel(_('Request expires'), msg), 3, 0)
         grid.addWidget(self.expires_combo, 3, 1)
@@ -1243,7 +1243,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         self.amount_e = BTCAmountEdit(self.get_decimal_point)
         self.payto_e = PayToEdit(self)
         msg = _('Recipient of the funds.') + '\n\n'\
-              + _('You may enter a Dash address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Dash address)')
+              + _('You may enter a PACGlobal address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a PACGlobal address)')
         payto_label = HelpLabel(_('Pay to'), msg)
         grid.addWidget(payto_label, 1, 0)
         grid.addWidget(self.payto_e, 1, 1, 1, -1)
@@ -1289,7 +1289,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         hbox.addStretch(1)
         grid.addLayout(hbox, 4, 4)
 
-        msg = _('Dash transactions are in general not free. A transaction fee is paid by the sender of the funds.') + '\n\n'\
+        msg = _('PACGlobal transactions are in general not free. A transaction fee is paid by the sender of the funds.') + '\n\n'\
               + _('The amount of fee can be decided freely by the sender. However, transactions with low fees take more time to be processed.') + '\n\n'\
               + _('A suggested fee is automatically added to this field. You may override it. The suggested fee increases with the size of the transaction.')
         self.fee_e_label = HelpLabel(_('Fee'), msg)
@@ -1297,7 +1297,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         self.extra_payload = ExtraPayloadWidget(self)
         self.extra_payload.hide()
         msg = _('Extra payload.') + '\n\n'\
-              + _('Dash DIP2 Special Transations extra payload.')
+              + _('PACGlobal DIP2 Special Transations extra payload.')
         self.extra_payload_label = HelpLabel(_('Extra payload'), msg)
         self.extra_payload_label.hide()
         grid.addWidget(self.extra_payload_label, 7, 0)
@@ -1705,10 +1705,10 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
 
         for o in outputs:
             if o.address is None:
-                self.show_error(_('Dash Address is None'))
+                self.show_error(_('PACGlobal Address is None'))
                 return True
             if o.type == TYPE_ADDRESS and not bitcoin.is_address(o.address):
-                self.show_error(_('Invalid Dash Address'))
+                self.show_error(_('Invalid PACGlobal Address'))
                 return True
             if o.value is None:
                 self.show_error(_('Invalid Amount'))
@@ -2234,7 +2234,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         sb.addPermanentWidget(self.seed_button)
         self.status_button = StatusBarButton(read_QIcon("status_disconnected.png"), _("Network"), lambda: self.gui_object.show_network_dialog(self))
         sb.addPermanentWidget(self.status_button)
-        self.dash_net_button = StatusBarButton(read_QIcon('dash_net_0.png'), _("Dash Network"), lambda: self.gui_object.show_dash_net_dialog(self))
+        self.dash_net_button = StatusBarButton(read_QIcon('dash_net_0.png'), _("PACGlobal Network"), lambda: self.gui_object.show_dash_net_dialog(self))
         self.update_dash_net_status_btn()
         sb.addPermanentWidget(self.dash_net_button)
         run_hook('create_status_bar', sb)
@@ -2453,7 +2453,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         address  = address.text().strip()
         message = message.toPlainText().strip()
         if not bitcoin.is_address(address):
-            self.show_message(_('Invalid Dash address.'))
+            self.show_message(_('Invalid PACGlobal address.'))
             return
         if self.wallet.is_watching_only():
             self.show_message(_('This is a watching-only wallet.'))
@@ -2481,7 +2481,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         address  = address.text().strip()
         message = message.toPlainText().strip().encode('utf-8')
         if not bitcoin.is_address(address):
-            self.show_message(_('Invalid Dash address.'))
+            self.show_message(_('Invalid PACGlobal address.'))
             return
         try:
             # This can throw on invalid base64
@@ -2704,7 +2704,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         e.setReadOnly(True)
         vbox.addWidget(e)
 
-        defaultname = 'electrum-dash-private-keys.csv'
+        defaultname = 'electrum-pac-private-keys.csv'
         select_msg = _('Select file to export your private keys to')
         hbox, filename_e, csv_button = filename_field(self, self.config, defaultname, select_msg)
         vbox.addLayout(hbox)

@@ -480,7 +480,7 @@ def user_dir():
     if 'ANDROID_DATA' in os.environ:
         return android_data_dir()
     elif os.name == 'posix':
-        return os.path.join(os.environ["HOME"], ".electrum-dash")
+        return os.path.join(os.environ["HOME"], ".electrum-pac")
     elif "APPDATA" in os.environ:
         return os.path.join(os.environ["APPDATA"], "Electrum-PAC")
     elif "LOCALAPPDATA" in os.environ:
@@ -656,16 +656,12 @@ def time_difference(distance_in_time, include_seconds):
         return "over %d years" % (round(distance_in_minutes / 525600))
 
 mainnet_block_explorers = {
-    'Dash.org': ('https://explorer.dash.org/',
-                 {'tx': 'tx/', 'addr': 'address/'}),
-    'Insight.dash.org': ('https://insight.dash.org/insight/',
-                         {'tx': 'tx/', 'addr': 'address/'}),
-    'system default': ('blockchain:/',
-                       {'tx': 'tx/', 'addr': 'address/'}),
+    'explorer.paccoin.net': ('http://explorer.paccoin.net/',
+                 {'tx': 'tx/', 'addr': 'address/'})
 }
 
 testnet_block_explorers = {
-    'Dash.org': ('https://testnet-insight.dashevo.org/insight/',
+    'PACGlobal.org': ('https://testnet-insight.dashevo.org/insight/',
                  {'tx': 'tx/', 'addr': 'address/'}),
     'system default': ('blockchain:/',
                        {'tx': 'tx/', 'addr': 'address/'}),
@@ -677,7 +673,7 @@ def block_explorer_info():
 
 def block_explorer(config: 'SimpleConfig') -> str:
     from . import constants
-    default_ = 'Dash.org' if not constants.net.TESTNET else 'Dash.org'
+    default_ = 'PACGlobal.org' if not constants.net.TESTNET else 'PACGlobal.org'
     be_key = config.get('block_explorer', default_)
     be = block_explorer_info().get(be_key)
     return be_key if be is not None else default_
@@ -713,12 +709,12 @@ def parse_URI(uri: str, on_pr: Callable = None, *, loop=None) -> dict:
 
     if ':' not in uri:
         if not bitcoin.is_address(uri):
-            raise InvalidBitcoinURI("Not a Dash address")
+            raise InvalidBitcoinURI("Not a PACGlobal address")
         return {'address': uri}
 
     u = urllib.parse.urlparse(uri)
     if u.scheme != 'dash':
-        raise InvalidBitcoinURI("Not a Dash URI")
+        raise InvalidBitcoinURI("Not a PACGlobal URI")
     address = u.path
 
     # python for android fails to parse query
@@ -735,7 +731,7 @@ def parse_URI(uri: str, on_pr: Callable = None, *, loop=None) -> dict:
     out = {k: v[0] for k, v in pq.items()}
     if address:
         if not bitcoin.is_address(address):
-            raise InvalidBitcoinURI(f"Invalid Dash address: {address}")
+            raise InvalidBitcoinURI(f"Invalid PACGlobal address: {address}")
         out['address'] = address
     if 'amount' in out:
         am = out['amount']
@@ -953,7 +949,7 @@ class TxMinedInfo(NamedTuple):
 
 def make_aiohttp_session(proxy: Optional[dict], headers=None, timeout=None):
     if headers is None:
-        headers = {'User-Agent': 'Dash-Electrum'}
+        headers = {'User-Agent': 'PACGlobal-Electrum'}
     if timeout is None:
         timeout = aiohttp.ClientTimeout(total=30)
     elif isinstance(timeout, (int, float)):

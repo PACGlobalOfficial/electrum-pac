@@ -94,7 +94,7 @@ def command(s):
             wallet = args[0].wallet
             password = kwargs.get('password')
             if c.requires_wallet and wallet is None:
-                raise Exception("wallet not loaded. Use 'electrum-dash daemon load_wallet'")
+                raise Exception("wallet not loaded. Use 'electrum-pac daemon load_wallet'")
             if c.requires_password and password is None and wallet.has_password():
                 return {'error': 'Password required' }
             return func(*args, **kwargs)
@@ -158,8 +158,8 @@ class Commands:
     @command('')
     def restore(self, text, passphrase=None, password=None, encrypt_file=True):
         """Restore a wallet from text. Text can be a seed phrase, a master
-        public key, a master private key, a list of Dash addresses
-        or Dash private keys.
+        public key, a master private key, a list of PACGlobal addresses
+        or PACGlobal private keys.
         If you want to be prompted for an argument, type '?' or ':' (concealed)
         """
         d = restore_wallet_from_text(text,
@@ -337,7 +337,7 @@ class Commands:
     @command('')
     def dumpprivkeys(self):
         """Deprecated."""
-        return "This command is deprecated. Use a pipe instead: 'electrum-dash listaddresses | electrum-dash getprivatekeys - '"
+        return "This command is deprecated. Use a pipe instead: 'electrum-pac listaddresses | electrum-pac getprivatekeys - '"
 
     @command('')
     def validateaddress(self, address):
@@ -519,7 +519,7 @@ class Commands:
 
     @command('w')
     def setlabel(self, key, label):
-        """Assign a label to an item. Item may be a Dash address or a
+        """Assign a label to an item. Item may be a PACGlobal address or a
         transaction ID"""
         self.wallet.set_label(key, label)
 
@@ -969,8 +969,8 @@ def eval_bool(x: str) -> bool:
 
 param_descriptions = {
     'privkey': 'Private key. Type \'?\' to get a prompt.',
-    'destination': 'Dash address, contact or alias',
-    'address': 'Dash address',
+    'destination': 'PACGlobal address, contact or alias',
+    'address': 'PACGlobal address',
     'seed': 'Seed phrase',
     'txid': 'Transaction ID',
     'pos': 'Position',
@@ -984,13 +984,13 @@ param_descriptions = {
     'requested_amount': 'Requested amount (in PAC).',
     'outputs': 'list of ["address", amount]',
     'redeem_script': 'redeem script (hexadecimal)',
-    'conf_file': 'Masternode.conf file from Dash.',
+    'conf_file': 'Masternode.conf file from PACGlobal.',
     'alias': 'Masternode alias.',
     'cpfile': 'Checkpoints file',
 }
 
 command_options = {
-    'broadcast':   (None, "Broadcast the transaction to the Dash network"),
+    'broadcast':   (None, "Broadcast the transaction to the PACGlobal network"),
     'password':    ("-W", "Password"),
     'new_password':(None, "New Password"),
     'encrypt_file':(None, "Whether the file on disk should be encrypted with the provided password"),
@@ -1003,7 +1003,7 @@ command_options = {
     'labels':      ("-l", "Show the labels of listed addresses"),
     'nocheck':     (None, "Do not verify aliases"),
     'imax':        (None, "Maximum number of inputs"),
-    'fee':         ("-f", "Transaction fee (in Dash)"),
+    'fee':         ("-f", "Transaction fee (in PACGlobal)"),
     'from_addr':   ("-F", "Source address (must be a wallet address; use sweep to spend from non-wallet address)."),
     'change_addr': ("-c", "Change address. Default is a spare address, or the source address if it's not in the wallet"),
     'nbits':       (None, "Number of bits of entropy"),
@@ -1135,7 +1135,7 @@ def add_global_options(parser):
     group = parser.add_argument_group('global options')
     group.add_argument("-v", dest="verbosity", help="Set verbosity (log levels)", default='')
     group.add_argument("-V", dest="verbosity_shortcuts", help="Set verbosity (shortcut-filter list)", default='')
-    group.add_argument("-D", "--dir", dest="electrum_path", help="electrum-dash directory")
+    group.add_argument("-D", "--dir", dest="electrum_path", help="electrum-pac directory")
     group.add_argument("-P", "--portable", action="store_true", dest="portable", default=False, help="Use local 'electrum_data' directory")
     group.add_argument("-w", "--wallet", dest="wallet_path", help="wallet path")
     group.add_argument("--testnet", action="store_true", dest="testnet", default=False, help="Use Testnet")
@@ -1144,7 +1144,7 @@ def add_global_options(parser):
 def get_parser():
     # create main parser
     parser = argparse.ArgumentParser(
-        epilog="Run 'electrum-dash help <command>' to see the help for a command")
+        epilog="Run 'electrum-pac help <command>' to see the help for a command")
     add_global_options(parser)
     subparsers = parser.add_subparsers(dest='cmd', metavar='<command>')
     # gui

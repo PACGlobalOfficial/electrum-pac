@@ -1,8 +1,8 @@
 include LICENCE RELEASE-NOTES AUTHORS
 include README.rst
-include electrum-dash.desktop
+include electrum-pac.desktop
 include *.py
-include electrum-dash
+include electrum-pac
 include contrib/requirements/requirements.txt
 include contrib/requirements/requirements-hw.txt
 recursive-include packages *.py

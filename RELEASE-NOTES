@@ -1,7 +1,7 @@
 # Release 3.3.8
 
  * appimage: URLs could not be opened on some desktop environments (#5425)
- * add Dash P2P Network for InstantSend support (dash_net, dash_peer,
+ * add PACGlobal P2P Network for InstantSend support (dash_net, dash_peer,
    dash_msg modules, qt/kivy gui)
  * add InstantSend support (wallet/stdio/text/qt/kivy)
  * refactor ProTx support (stores ProTX MNs and LLMQ lists in file)
@@ -98,7 +98,7 @@
 
  * Do not expose users to server error messages (#4968)
  * Notify users of new releases. Release announcements must be signed,
-   and they are verified using a hardcoded Dash address.
+   and they are verified using a hardcoded PACGlobal address.
  * Hardware wallet fixes (#4991, #4993, #5006)
  * Display only QR code in QRcode Window
  * Randomise locktime of transactions
@@ -173,7 +173,7 @@
 
 # Release 3.2.3.1
 
- * Rename to Dash-Electrum
+ * Rename to PACGlobal-Electrum
  * Add "Use Tor Proxy on startup" option, add Tor Proxy setup to Win builds,
    add docs to setup Tor Proxy on other platforms. Warning if run without Tor.
 

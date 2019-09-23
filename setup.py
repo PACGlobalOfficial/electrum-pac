@@ -46,8 +46,8 @@ if platform.system() in ['Linux', 'FreeBSD', 'DragonFly']:
         else:
             usr_share = os.path.expanduser('~/.local/share')
     data_files += [
-        (os.path.join(usr_share, 'applications/'), ['electrum-dash.desktop']),
-        (os.path.join(usr_share, icons_dirname), ['electrum_dash/gui/icons/electrum-dash.png']),
+        (os.path.join(usr_share, 'applications/'), ['electrum-pac.desktop']),
+        (os.path.join(usr_share, icons_dirname), ['electrum_dash/gui/icons/electrum-pac.png']),
     ]
 
 extras_require = {
@@ -59,7 +59,7 @@ extras_require['full'] = [pkg for sublist in list(extras_require.values()) for p
 
 
 setup(
-    name="Dash-Electrum",
+    name="PACGlobal-Electrum",
     version=version.ELECTRUM_VERSION,
     python_requires='>={}'.format(MIN_PYTHON_VERSION),
     install_requires=requirements,
@@ -86,7 +86,7 @@ setup(
             'icons/checkbox/*.*',
         ],
     },
-    scripts=['electrum_dash/electrum-dash'],
+    scripts=['electrum_dash/electrum-pac'],
     data_files=data_files,
     description="Lightweight Dashpay Wallet",
     maintainer="akhavr",

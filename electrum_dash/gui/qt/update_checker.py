@@ -19,7 +19,7 @@ from electrum_dash.logging import Logger
 
 
 class UpdateCheck(QWidget, Logger):
-    url = "https://raw.githubusercontent.com/akhavr/electrum-dash/master/.latest-version"
+    url = "https://raw.githubusercontent.com/akhavr/electrum-pac/master/.latest-version"
     download_url = "https://github.com/PACGlobalOfficial/electrum-pac/releases"
 
 

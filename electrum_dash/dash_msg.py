@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Dash-Electrum - lightweight Dash client
-# Copyright (C) 2019 Dash Developers
+# PACGlobal-Electrum - lightweight PACGlobal client
+# Copyright (C) 2019 PACGlobal Developers
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation files
@@ -52,7 +52,7 @@ FILTERADD_MAX_ELEMENT_BYTES = 520
 
 
 class DashMsgError(Exception):
-    """Thrown when there's a problem with Dash message serialize/deserialize"""
+    """Thrown when there's a problem with PACGlobal message serialize/deserialize"""
 
 
 class IntEnumWithCheck(IntEnum):
@@ -99,7 +99,7 @@ class DashType(IntEnumWithCheck):
 
 
 class SporkID(IntEnumWithCheck):
-    '''Enum representing known Dash spork IDs'''
+    '''Enum representing known PACGlobal spork IDs'''
     SPORK_2_INSTANTSEND_ENABLED = 10001
     SPORK_3_INSTANTSEND_BLOCK_FILTERING = 10002
     SPORK_5_INSTANTSEND_MAX_VALUE = 10004
@@ -234,7 +234,7 @@ class DashInventory(namedtuple('DashInventory', 'type hash')):
 
 
 class DashCmd:
-    '''Class representing Dash network message packed with msg header cmd'''
+    '''Class representing PACGlobal network message packed with msg header cmd'''
 
     def __init__(self, cmd, payload=None):
         vds = BCDataStream()
@@ -271,7 +271,7 @@ class DashCmd:
 
 
 class DashMsgBase:
-    '''Base Class representing Dash Network messages'''
+    '''Base Class representing PACGlobal Network messages'''
     def __init__(self, *args, **kwargs):
         if args and not kwargs:
             argsl = list(args)

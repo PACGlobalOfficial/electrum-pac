@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['exsrvmonit.py'],
-             pathex=['/home/max/tmp/electrum/electrum-dash-post-3.2.2/contrib/dash/exsrvmonit'],
+             pathex=['/home/max/tmp/electrum/electrum-pac-post-3.2.2/contrib/dash/exsrvmonit'],
              binaries=[],
              datas=[],
              hiddenimports=[],

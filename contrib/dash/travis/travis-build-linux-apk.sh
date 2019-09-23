@@ -10,15 +10,15 @@ BUILD_REPO_URL=https://github.com/PACGlobalOfficial/electrum-pac.git
 
 cd build
 
-git clone --branch $TRAVIS_TAG $BUILD_REPO_URL electrum-dash
+git clone --branch $TRAVIS_TAG $BUILD_REPO_URL electrum-pac
 
-pushd electrum-dash
+pushd electrum-pac
 ./contrib/make_locale
 find . -name '*.po' -delete
 find . -name '*.pot' -delete
 popd
 
-sudo chown -R 1000 electrum-dash
+sudo chown -R 1000 electrum-pac
 
 DOCKER_CMD="rm -rf packages"
 DOCKER_CMD="$DOCKER_CMD && ./contrib/make_packages"
@@ -30,6 +30,6 @@ if [ $ELECTRUM_MAINNET = false ] ; then
 fi
 
 docker run --rm \
-    -v $(pwd)/electrum-dash:/home/buildozer/build \
-    -t zebralucky/electrum-dash-winebuild:Kivy33x bash -c \
+    -v $(pwd)/electrum-pac:/home/buildozer/build \
+    -t zebralucky/electrum-pac-winebuild:Kivy33x bash -c \
     "$DOCKER_CMD"

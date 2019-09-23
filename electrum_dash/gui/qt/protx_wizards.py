@@ -1458,7 +1458,7 @@ class Dip3MasternodeWizard(QWizard):
         self.setWizardStyle(QWizard.ClassicStyle)
         self.setPixmap(QWizard.LogoPixmap, logo)
         self.setWindowTitle(title)
-        self.setWindowIcon(read_QIcon('electrum-dash.png'))
+        self.setWindowIcon(read_QIcon('electrum-pac.png'))
         self.setMinimumSize(1000, 450)
 
     def validate_alias(self, alias):
@@ -1586,7 +1586,7 @@ class Dip3FileWizard(QWizard):
         self.setWizardStyle(QWizard.ClassicStyle)
         self.setPixmap(QWizard.LogoPixmap, logo)
         self.setWindowTitle(title)
-        self.setWindowIcon(read_QIcon('electrum-dash.png'))
+        self.setWindowIcon(read_QIcon('electrum-pac.png'))
         self.setMinimumSize(1000, 450)
 
 

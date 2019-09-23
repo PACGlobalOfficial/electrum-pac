@@ -167,7 +167,7 @@ class HideezPlugin(HW_PluginBase):
         return client
 
     def get_coin_name(self):
-        return "Dash Testnet" if constants.net.TESTNET else "Dash"
+        return "PACGlobal Testnet" if constants.net.TESTNET else "PACGlobal"
 
     def _make_node_path(self, xpub, address_n):
         bip32node = BIP32Node.from_xkey(xpub)

@@ -231,7 +231,7 @@ class DashNetDialogLayout(object):
         sporks_tab = QWidget()
         banlist_tab = QWidget()
         bls_speed_tab = QWidget()
-        tabs.addTab(dash_net_tab, _('Dash Network'))
+        tabs.addTab(dash_net_tab, _('PACGlobal Network'))
         tabs.addTab(sporks_tab, _('Sporks'))
         tabs.addTab(banlist_tab, _('Banlist'))
 
@@ -274,7 +274,7 @@ class DashNetDialogLayout(object):
                     self.timer.start()
             tabs.currentChanged.connect(on_tabs_current_changed)
 
-        # Dash Network tab
+        # PACGlobal Network tab
         grid = QGridLayout(dash_net_tab)
         grid.setSpacing(8)
         dash_net = self.network.dash_net
@@ -288,7 +288,7 @@ class DashNetDialogLayout(object):
         grid.addWidget(self.read_kb, 0, 2, 1, 2)
         grid.addWidget(self.write_kb, 0, 4, 1, 2)
 
-        self.run_dash_net_cb = QCheckBox(_('Enable Dash Network'))
+        self.run_dash_net_cb = QCheckBox(_('Enable PACGlobal Network'))
         self.run_dash_net_cb.setChecked(self.config.get('run_dash_net', True))
         run_dash_net_modifiable = self.config.is_modifiable('run_dash_net')
         self.run_dash_net_cb.setEnabled(run_dash_net_modifiable)
@@ -355,16 +355,16 @@ class DashNetDialogLayout(object):
         self.dash_peers_list = DashPeersWidget(self)
         grid.addWidget(self.dash_peers_list, 4, 0, 1, -1)
 
-        # Dash Sporks tab
+        # PACGlobal Sporks tab
         vbox = QVBoxLayout(sporks_tab)
-        sporks_label = QLabel(_('Dash Sporks Values'))
+        sporks_label = QLabel(_('PACGlobal Sporks Values'))
         self.sporks_list = SporksWidget(self)
         vbox.addWidget(sporks_label)
         vbox.addWidget(self.sporks_list)
 
-        # Dash Banlist tab
+        # PACGlobal Banlist tab
         vbox = QVBoxLayout(banlist_tab)
-        banlist_label = QLabel(_('Banned Dash Peers'))
+        banlist_label = QLabel(_('Banned PACGlobal Peers'))
         self.banlist_list = BanlistWidget(self)
         vbox.addWidget(banlist_label)
         vbox.addWidget(self.banlist_list)
@@ -414,7 +414,7 @@ class DashNetDialogLayout(object):
 class DashNetDialog(QDialog):
     def __init__(self, network, config, dash_net_sobj):
         QDialog.__init__(self)
-        self.setWindowTitle(_('Dash Network'))
+        self.setWindowTitle(_('PACGlobal Network'))
         self.setMinimumSize(700, 400)
         self.is_testnet = constants.net.TESTNET
         self.dnlayout = DashNetDialogLayout(network, config, self)

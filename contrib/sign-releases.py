@@ -49,7 +49,7 @@ Manual zip aligning:
 
     android-sdk-linux/build-tools/27.0.3/zipalign -v 4 \
         Electrum_PAC-3.0.6.1-release-unsigned.apk \
-        Dash-Electrum-3.0.6.1-release.apk
+        PACGlobal-Electrum-3.0.6.1-release.apk
 
 
 
@@ -143,9 +143,9 @@ PEP440_PUBVER_PATTERN = re.compile('^((\d+)!)?'
                                    '([a-zA-Z]+\d+)?'
                                    '((\.[a-zA-Z]+\d+)*)$')
 REL_NOTES_PATTERN = re.compile('^#.+?(^[^#].+?)^#.+?', re.M | re.S)
-SDIST_NAME_PATTERN = re.compile('^Dash-Electrum-(.*).tar.gz$')
-SDIST_DIR_TEMPLATE = 'Dash-Electrum-{version}'
-PPA_SOURCE_NAME = 'electrum-dash'
+SDIST_NAME_PATTERN = re.compile('^PACGlobal-Electrum-(.*).tar.gz$')
+SDIST_DIR_TEMPLATE = 'PACGlobal-Electrum-{version}'
+PPA_SOURCE_NAME = 'electrum-pac'
 PPA_ORIG_NAME_TEMPLATE = '%s_{version}.orig.tar.gz' % PPA_SOURCE_NAME
 CHANGELOG_TEMPLATE = """%s ({ppa_version}) {series}; urgency=medium
 {changes} -- {uid}  {time}""" % PPA_SOURCE_NAME
@@ -169,7 +169,7 @@ JARSIGNER_ARGS = [
     '-keypass:env', JKS_KEYPASS,
 ]
 UNSIGNED_APK_PATTERN = re.compile('^Electrum_PAC(_Testnet)?-(.*)-release-unsigned.apk$')
-SIGNED_APK_TEMPLATE = 'Dash-Electrum{testnet}-{version}-release.apk'
+SIGNED_APK_TEMPLATE = 'PACGlobal-Electrum{testnet}-{version}-release.apk'
 
 
 os.environ['QUILT_PATCHES'] = 'debian/patches'

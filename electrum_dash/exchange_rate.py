@@ -21,9 +21,9 @@ from .simple_config import SimpleConfig
 from .logging import Logger
 
 
-DEFAULT_ENABLED = False
+DEFAULT_ENABLED = True
 DEFAULT_CURRENCY = "USD"
-DEFAULT_EXCHANGE = "CoinGecko"  # default exchange should ideally provide historical rates
+DEFAULT_EXCHANGE = "CoinMarketCap"  # default exchange should ideally provide historical rates
 
 
 # See https://en.wikipedia.org/wiki/ISO_4217
@@ -178,7 +178,7 @@ class Poloniex(ExchangeBase):
 
 class CoinMarketCap(ExchangeBase):
     async def get_rates(self, ccy):
-        json = await self.get_json('api.coinmarketcap.com', '/v1/ticker/dash/')
+        json = await self.get_json('api.coinmarketcap.com', '/v1/ticker/pac-global/')
         quote_currencies = {}
         if not isinstance(json, list):
             return quote_currencies
@@ -194,7 +194,7 @@ class CoinMarketCap(ExchangeBase):
 class CoinCap(ExchangeBase):
 
     async def get_rates(self, ccy):
-        json = await self.get_json('api.coincap.io', '/v2/rates/dash/')
+        json = await self.get_json('api.coincap.io', '/v2/rates/pac-global/')
         return {'USD': Decimal(json['data']['rateUsd'])}
 
     def history_ccys(self):
@@ -204,7 +204,7 @@ class CoinCap(ExchangeBase):
         # Currently 2000 days is the maximum in 1 API call
         # (and history starts on 2017-03-23)
         history = await self.get_json('api.coincap.io',
-                                      '/v2/assets/dash/history?interval=d1&limit=2000')
+                                      '/v2/assets/pac-global/history?interval=d1&limit=2000')
         return dict([(datetime.utcfromtimestamp(h['time']/1000).strftime('%Y-%m-%d'), h['priceUsd'])
                      for h in history['data']])
 
@@ -213,7 +213,7 @@ class CoinGecko(ExchangeBase):
 
     async def get_rates(self, ccy):
         json = await self.get_json('api.coingecko.com',
-                                   '/api/v3/coins/dash')
+                                   '/api/v3/coins/pac-global')
         r = dict([(ccy.upper(), Decimal(d))
                   for ccy, d in json['market_data']['current_price'].items()])
         return r
@@ -224,7 +224,7 @@ class CoinGecko(ExchangeBase):
 
     async def request_history(self, ccy):
         history = await self.get_json('api.coingecko.com',
-                                      '/api/v3/coins/dash/market_chart?vs_currency=%s&days=max' % ccy)
+                                      '/api/v3/coins/pac-global/market_chart?vs_currency=%s&days=max' % ccy)
 
         return dict([(datetime.utcfromtimestamp(h[0]/1000).strftime('%Y-%m-%d'), h[1])
                      for h in history['prices']])
